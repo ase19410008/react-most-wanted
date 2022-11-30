@@ -10,10 +10,16 @@ import CustomPaper from '../../components/CustomPaper'
 
 import { Link } from 'react-router-dom'
 import { Stepper, Step, StepLabel } from '@mui/material'
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Autocomplete from '@mui/material/Autocomplete';
 
-const steps = ["アカウント登録", "基本情報", "在籍情報"];
+const steps = ["アカウント登録", "基本情報", "学校情報"];
 
-const SignUp = ({ redirectTo = '/' }) => {
+const Step3 = ({ redirectTo = '/' }) => {
   const intl = useIntl()
   const navigate = useNavigate()
   const location = useLocation()
@@ -24,6 +30,11 @@ const SignUp = ({ redirectTo = '/' }) => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const { toggleThis } = useMenu()
   const { setAuth } = useAuth()
+
+  const subjects = [
+    {label: '国語'}, 
+    {label: '数学'}, 
+  ];
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -50,7 +61,7 @@ const SignUp = ({ redirectTo = '/' }) => {
     <Page
       pageTitle={intl.formatMessage({
         id: 'sign_up',
-        defaultMessage: ' Sign up',
+        defaultMessage: '登録',
       })}
       onBackClick={() => {
         navigate(-1)
@@ -67,14 +78,21 @@ const SignUp = ({ redirectTo = '/' }) => {
           }}
         >
           <Typography component="h1" variant="h5">
-            {intl.formatMessage({ id: 'サインアップ', defaultMessage: 'サインアップ' })}
+            {/* {intl.formatMessage({ id: 'sign_up', defaultMessage: 'Sign up' })} */}
+            サインアップ
           </Typography>
 
-          <Stepper activeStep={0} alternativeLabel>
+          {/* <Stepper>
+            <Step key="">
+              <StepLabel>{steps[0]}</StepLabel>
+            </Step>
+          </Stepper> */}
+
+          <Stepper activeStep={2} alternativeLabel>
             {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
+                <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                </Step>
             ))}
           </Stepper>
 
@@ -84,61 +102,84 @@ const SignUp = ({ redirectTo = '/' }) => {
             noValidate
           >
             <TextField
+              // value={username}
+              // onInput={(e) => setUsername(e.target.value)}
               variant="outlined"
               margin="normal"
               required
               fullWidth
               id="username"
-              label={intl.formatMessage({
-                id: '教師ID',
-                defaultMessage: '',
-              })}
-              name="username"
-              autoComplete="username"
+              // label={intl.formatMessage({
+              //   id: 'username',
+              //   defaultMessage: 'Username',
+              // })}
+              label="学校名"
+              name="school"
+              // autoComplete="username"
               autoFocus
             />
+            <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={subjects}
+            sx={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="教科名" />}
+            />
             <TextField
-              value={password}
-              onInput={(e) => setPassword(e.target.value)}
+              // value={password}
+              // onInput={(e) => setPassword(e.target.value)}
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              name="password"
+              name="club"
               label={intl.formatMessage({
-                id: 'パスワード',
-                defaultMessage: 'パスワード',
+                id: '部活動',
+                defaultMessage: '',
               })}
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              placeholder=""
+              id="club"
+              // autoComplete="current-password"
             />
             <TextField
-              value={confirmPassword}
-              onInput={(e) => setConfirmPassword(e.target.value)}
+              // value={password}
+              // onInput={(e) => setPassword(e.target.value)}
+              type="number"
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              name="password_confirm"
+              name="dob"
               label={intl.formatMessage({
-                id: '再確認用パスワード',
-                defaultMessage: '再確認用パスワード',
+                id: '勤続年数',
+                defaultMessage: '',
               })}
-              type="password"
-              id="password_confirm"
-              autoComplete="current-password"
+              placeholder="1"
+              id="dob"
+              // autoComplete="current-password"
             />
-            {/* <Button
+            <FormControl>
+              <FormLabel id="demo-row-radio-buttons-group-label">役職</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                <FormControlLabel value="" control={<Radio />} label="担任" />
+                <FormControlLabel value="" control={<Radio />} label="学年主任" />
+                <FormControlLabel value="" control={<Radio />} label="生活指導" />
+              </RadioGroup>
+            </FormControl>
+            <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               style={{ margin: theme.spacing(3, 0, 2) }}
             >
-              {intl.formatMessage({ id: 'sign_up', defaultMessage: 'Step2' })}
-            </Button> */}
-            <Link to="step2">基本情報</Link>
+              {/* {intl.formatMessage({ id: 'sign_up', defaultMessage: '登録' })} */}
+              登録
+            </Button>
           </form>
         </div>
       </CustomPaper>
@@ -146,4 +187,4 @@ const SignUp = ({ redirectTo = '/' }) => {
   )
 }
 
-export default SignUp
+export default Step3

@@ -53,7 +53,7 @@ const SignIn = ({ redirectTo = '/' }) => {
           }}
         >
           <Typography component="h1" variant="h5">
-            {intl.formatMessage({ id: 'sign_in' })}
+            {intl.formatMessage({ id: 'サインイン' })}
           </Typography>
           <form
             sytle={{ marginTop: theme.spacing(1) }}
@@ -68,7 +68,7 @@ const SignIn = ({ redirectTo = '/' }) => {
               required
               fullWidth
               id="username"
-              label={intl.formatMessage({ id: 'username' })}
+              label={intl.formatMessage({ id: '教師ID' })}
               name="username"
               autoComplete="username"
               autoFocus
@@ -81,7 +81,7 @@ const SignIn = ({ redirectTo = '/' }) => {
               required
               fullWidth
               name="password"
-              label={intl.formatMessage({ id: 'password' })}
+              label={intl.formatMessage({ id: 'パスワード' })}
               type="password"
               id="password"
               autoComplete="current-password"
@@ -93,7 +93,7 @@ const SignIn = ({ redirectTo = '/' }) => {
               color="primary"
               style={{ margin: theme.spacing(3, 0, 2) }}
             >
-              {intl.formatMessage({ id: 'sign_in' })}
+              {intl.formatMessage({ id: 'サインイン' })}
             </Button>
           </form>
 
@@ -106,10 +106,10 @@ const SignIn = ({ redirectTo = '/' }) => {
             }}
           >
             <Link to="/password_reset">
-              {intl.formatMessage({ id: 'forgot_password' })}?
+              {intl.formatMessage({ id: 'パスワードを忘れた' })}?
             </Link>
             <Link to="/signup">
-              {intl.formatMessage({ id: 'registration' })}
+              {intl.formatMessage({ id: '登録' })}
             </Link>
           </div>
         </div>

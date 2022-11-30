@@ -10,10 +10,16 @@ import CustomPaper from '../../components/CustomPaper'
 
 import { Link } from 'react-router-dom'
 import { Stepper, Step, StepLabel } from '@mui/material'
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Step3 from './Step3'
 
-const steps = ["アカウント登録", "基本情報", "在籍情報"];
+const steps = ["アカウント登録", "基本情報", "学校情報"];
 
-const SignUp = ({ redirectTo = '/' }) => {
+const Step2 = ({ redirectTo = '/' }) => {
   const intl = useIntl()
   const navigate = useNavigate()
   const location = useLocation()
@@ -70,11 +76,11 @@ const SignUp = ({ redirectTo = '/' }) => {
             {intl.formatMessage({ id: 'サインアップ', defaultMessage: 'サインアップ' })}
           </Typography>
 
-          <Stepper activeStep={0} alternativeLabel>
+          <Stepper activeStep={1} alternativeLabel>
             {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
+                <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                </Step>
             ))}
           </Stepper>
 
@@ -84,50 +90,79 @@ const SignUp = ({ redirectTo = '/' }) => {
             noValidate
           >
             <TextField
+              value={username}
+              onInput={(e) => setUsername(e.target.value)}
               variant="outlined"
               margin="normal"
               required
               fullWidth
               id="username"
               label={intl.formatMessage({
-                id: '教師ID',
-                defaultMessage: '',
+                id: '氏名',
+                defaultMessage: '氏名',
               })}
+              placeholder="佐久間　雄大"
               name="username"
               autoComplete="username"
               autoFocus
             />
+            <FormControl>
+              <FormLabel id="demo-row-radio-buttons-group-label">性別</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                <FormControlLabel value="female" control={<Radio />} label="女性" />
+                <FormControlLabel value="male" control={<Radio />} label="男性" />
+              </RadioGroup>
+            </FormControl>
+
             <TextField
-              value={password}
-              onInput={(e) => setPassword(e.target.value)}
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              name="password"
+              name="dob"
               label={intl.formatMessage({
-                id: 'パスワード',
-                defaultMessage: 'パスワード',
+                id: '生年月日',
+                defaultMessage: '',
               })}
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              placeholder="2000/08/28"
+              id="dob"
+            />
+            <Typography>プロフィール画像</Typography>
+            <Button variant="contained" component="label"
+              style={{ margin: theme.spacing(3, 0, 2) }}>
+              アップロード
+              <input hidden accept="image/*" multiple type="file" />
+            </Button>
+
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="personal"
+              label={intl.formatMessage({
+                id: '性格',
+                defaultMessage: '',
+              })}
+              placeholder=""
+              id="personal"
             />
             <TextField
-              value={confirmPassword}
-              onInput={(e) => setConfirmPassword(e.target.value)}
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              name="password_confirm"
+              name="edu"
               label={intl.formatMessage({
-                id: '再確認用パスワード',
-                defaultMessage: '再確認用パスワード',
+                id: '最終学歴',
+                defaultMessage: '',
               })}
-              type="password"
-              id="password_confirm"
-              autoComplete="current-password"
+              placeholder="国際情報工科自動車大学校"
+              id="edu"
             />
             {/* <Button
               type="submit"
@@ -136,9 +171,9 @@ const SignUp = ({ redirectTo = '/' }) => {
               color="primary"
               style={{ margin: theme.spacing(3, 0, 2) }}
             >
-              {intl.formatMessage({ id: 'sign_up', defaultMessage: 'Step2' })}
+              {intl.formatMessage({ id: 'sign_up', defaultMessage: 'Step3' })}
             </Button> */}
-            <Link to="step2">基本情報</Link>
+            <Link to="../step3" relative='path'>学校情報</Link>
           </form>
         </div>
       </CustomPaper>
@@ -146,4 +181,4 @@ const SignUp = ({ redirectTo = '/' }) => {
   )
 }
 
-export default SignUp
+export default Step2
