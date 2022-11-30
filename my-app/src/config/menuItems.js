@@ -73,8 +73,8 @@ const getMenuItems = (props) => {
       {
         value: '/my_account',
         primaryText: intl.formatMessage({
-          id: 'my_account',
-          defaultMessage: 'My Account',
+          id: 'マイアカウント',
+          defaultMessage: 'マイアカウント',
         }),
         leftIcon: <AccountBoxIcon />,
       },
@@ -87,8 +87,8 @@ const getMenuItems = (props) => {
           : () => {},
         visible: true,
         primaryText: isAuthorised
-          ? intl.formatMessage({ id: 'sign_out' })
-          : intl.formatMessage({ id: 'sign_in' }),
+          ? intl.formatMessage({ id: 'サインアウト' })
+          : intl.formatMessage({ id: 'サインイン' }),
         leftIcon: isAuthorised ? <ExitToAppIcon /> : <LockIcon />,
       },
     ]

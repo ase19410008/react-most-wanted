@@ -6,6 +6,8 @@ import UnauthorizedRoute from 'base-shell/lib/components/UnauthorizedRoute'
 const SignIn = lazy(() => import('../pages/SignIn/SignIn'))
 
 const SignUp = lazy(() => import('../pages/SignUp/SignUp'))
+const Step2 = lazy(() => import('../pages/SignUp/Step2'))
+const Step3 = lazy(() => import('../pages/SignUp/Step3'))
 const PasswordReset = lazy(() => import('../pages/PasswordReset/PasswordReset'))
 const About = lazy(() => import('../pages/About'))
 const Home = lazy(() => import('../pages/Home/Home'))
@@ -33,6 +35,20 @@ const routes = [
       <UnauthorizedRoute>
         <SignUp redirectTo="/home" />
       </UnauthorizedRoute>
+    ),
+  },
+  {
+    path: '/signup/step2',
+    exact: true,
+    element: (
+      <Step2 />
+    ),
+  },
+  {
+    path: '/signup/step3',
+    exact: true,
+    element: (
+      <Step3 />
     ),
   },
   {
