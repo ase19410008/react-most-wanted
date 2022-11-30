@@ -106,18 +106,6 @@ const Step2 = ({ redirectTo = '/' }) => {
               autoComplete="username"
               autoFocus
             />
-            <FormControl>
-              <FormLabel id="demo-row-radio-buttons-group-label">性別</FormLabel>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
-                >
-                <FormControlLabel value="female" control={<Radio />} label="女性" />
-                <FormControlLabel value="male" control={<Radio />} label="男性" />
-              </RadioGroup>
-            </FormControl>
-
             <TextField
               variant="outlined"
               margin="normal"
@@ -131,13 +119,6 @@ const Step2 = ({ redirectTo = '/' }) => {
               placeholder="2000/08/28"
               id="dob"
             />
-            <Typography>プロフィール画像</Typography>
-            <Button variant="contained" component="label"
-              style={{ margin: theme.spacing(3, 0, 2) }}>
-              アップロード
-              <input hidden accept="image/*" multiple type="file" />
-            </Button>
-
             <TextField
               variant="outlined"
               margin="normal"
@@ -164,6 +145,23 @@ const Step2 = ({ redirectTo = '/' }) => {
               placeholder="国際情報工科自動車大学校"
               id="edu"
             />
+            <FormControl>
+              <FormLabel id="demo-row-radio-buttons-group-label">性別</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                <FormControlLabel value="female" control={<Radio />} label="女性" />
+                <FormControlLabel value="male" control={<Radio />} label="男性" />
+              </RadioGroup>
+            </FormControl>
+            <Typography>プロフィール画像</Typography>
+            <Button variant="contained" component="label"
+              style={{ margin: theme.spacing(3, 0, 2) }}>
+              アップロード
+              <input hidden accept="image/*" multiple type="file" />
+            </Button>
             {/* <Button
               type="submit"
               fullWidth
