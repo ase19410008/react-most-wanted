@@ -18,6 +18,9 @@ const ListPageDemo = lazy(() => import('../pages/ListPageDemo'))
 const TabsDemo = lazy(() => import('../pages/TabsDemo'))
 const MyAccount = lazy(() => import('../pages/MyAccount/MyAccount'))
 
+const School = lazy(() => import('../pages/School/School'))
+const Edit = lazy(() => import('../pages/School/Edit'))
+
 const routes = [
   {
     path: '/signin',
@@ -126,6 +129,20 @@ const routes = [
       <AuthorizedRoute>
         <TabsDemo />
       </AuthorizedRoute>
+    ),
+  },
+  {
+    path: '/school',
+    exact: true,
+    element: (
+      <School />
+    ),
+  },
+  {
+    path: '/school/edit',
+    exact: true,
+    element: (
+      <Edit />
     ),
   },
 ]

@@ -60,8 +60,8 @@ const Step3 = ({ redirectTo = '/' }) => {
   return (
     <Page
       pageTitle={intl.formatMessage({
-        id: 'sign_up',
-        defaultMessage: '登録',
+        id: 'サインアップ',
+        defaultMessage: '',
       })}
       onBackClick={() => {
         navigate(-1)
